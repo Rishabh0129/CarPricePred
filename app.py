@@ -10,14 +10,13 @@ model=pickle.load(open('rfModel.pkl','rb'))
 
 @app.route('/',methods=['GET'])
 def home():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 
 standardScaler=StandardScaler()
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
-    # Fuel_Type_Diesel=0
     if request.method=='POST':
         Year= int(request.form['Year'])
         Present_Price=float(request.form['Present_Price'])
